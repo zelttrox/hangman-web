@@ -1,3 +1,3 @@
-module hangman
+module main
 
 go 1.23.0

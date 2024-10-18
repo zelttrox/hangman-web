@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	hg "hangman/scripts"
-	web "http/web"
+	hg "main/scripts"
+	web "main/web"
 )
 
 func main() {
