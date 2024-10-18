@@ -1,12 +1,11 @@
 package server
 
-import (
-	"fmt"
-	"net/http"
-)
+import "net/http"
 
 func CreateWebsite() {
-	http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))
-	fmt.Println("BRANCH TEST")
+	Server = http.FileServer(http.Dir("./web"))
+	http.Handle("/web/", http.StripPrefix("/web/", Server))
 }
-//i want a refund
+
+func WebHandler() {
+}
