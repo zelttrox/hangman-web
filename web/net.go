@@ -1,11 +1,28 @@
 package server
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+	"text/template"
+)
 
-func CreateWebsite() {
+func CreatetServer() {
+	Template = "template.html"
 	Server = http.FileServer(http.Dir("./web"))
-	http.Handle("/web/", http.StripPrefix("/web/", Server))
+	http.HandleFunc("/", RequestHandler)
 }
 
-func WebHandler() {
+func RequestHandler(writeTo http.ResponseWriter, requestType *http.Request) {
+
+}
+
+func RenderWebsite(writeTo http.ResponseWriter) {
+	templateFile, err := template.ParseFiles(Template)
+	if err != nil {
+		fmt.Println("Could not load HTML template")
+	}
+	templateFile.Execute(writeTo)
+	{
+
+	}
 }

@@ -1,10 +1,11 @@
 package main
 
 import (
-	hg "main/scripts"
+hangman "main/scripts"
+web "main/web"
 )
 
 func main() {
-	hg.Init() // Initialisation du jeu
-	hg.Run()  // Lancement de la boucle du jeu
+	hangman.Init()  //Initialisation du jeu
+	hangman.Run()   //Lancement de la boucle du jeu
 }
