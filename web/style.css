@@ -1,0 +1,23 @@
+.flexMain {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.btnLetter {
+    background-color: rgba(185, 143, 110, 0.651);
+    border-color: rgba(120, 93, 72, 0.651);
+    border-radius: 3px;
+    box-shadow: rgba(74, 59, 48, 0.406) 1px 1px 1px 1px;
+}
+
+.btnGuess {
+    background-color: rgba(191, 120, 66, 0.651);
+    border-color: rgba(120, 93, 72, 0.651);
+    border-radius: 3px;
+    box-shadow: rgba(70, 38, 15, 0.607) 1px 1px 1px 1px;
+}

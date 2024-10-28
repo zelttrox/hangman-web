@@ -47,13 +47,13 @@ func Run() {
 				} else if !LetterTried {
 					Attempts--
 					ProcessHangman()
-					AttemptedLetter = append(AttemptedLetter, Input)
+					AttemptedLetters = append(AttemptedLetters, Input)
 				}
 			}
 		}
 		// Affiche les lettres déjà essayées
 		fmt.Println(Blankspace, "\n \n Attempts left: ", Attempts)
-		fmt.Println("Attempted Letter(s): ", "\033[36m", AttemptedLetter, "\033[0m")
+		fmt.Println("Attempted Letter(s): ", "\033[36m", AttemptedLetters, "\033[0m")
 		SpaceOut(4)
 
 		// Condition de perte
@@ -71,8 +71,8 @@ func Run() {
 
 // Vérifie si la lettre entrée a déjà été essayée
 func CheckAttempted(input string) {
-	for i := 0; i < len(AttemptedLetter); i++ {
-		if input == AttemptedLetter[i] {
+	for i := 0; i < len(AttemptedLetters); i++ {
+		if input == AttemptedLetters[i] {
 			LetterTried = true
 		}
 	}

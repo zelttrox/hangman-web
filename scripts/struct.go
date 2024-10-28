@@ -12,10 +12,10 @@ var HangmanProgress int      // Progression du Hangman
 var LinesToAdd int           // Lignes du Hangman à afficher
 var HangmanLen int           // Taille d'une frame du Hangman
 
-var Attempts int             // Nombre d'essais restants
-var MaxAttempts int          // Nombre total d'essais
-var AttemptedLetter []string // Lettres déjà essayées
-var LetterTried bool         // Est vrai si la lettre entrée a déjà été testée
+var Attempts int              // Nombre d'essais restants
+var MaxAttempts int           // Nombre total d'essais
+var AttemptedLetters []string // Lettres déjà essayées
+var LetterTried bool          // Est vrai si la lettre entrée a déjà été testée
 
 var IsHardcoreMode bool // Défini si le jeu est en mode hardcore ou en normal
 
