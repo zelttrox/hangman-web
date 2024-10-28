@@ -7,14 +7,31 @@
 
 <body>
 
-<p> Hangman Web </p>
+<p> {{.Title}} </p>
 
-<form action="/hangman" method="post">
-
-    <input id="inputBox" name="input" type="text" />
-    <input type="submit" value="Entrer" />
+<div class="flexMain">
     
-</form>
+    <div class="flex">
+        <img src={{.Image}}>
+
+    </div>
+
+</div>
     
 </body>
+
+<style>
+
+.flexMain {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+</style>
+
 </html>

@@ -2,7 +2,7 @@ package main
 
 import (
 hangman "main/scripts"
-web "main/web"
+//web "main/web"
 )
 
 func main() {
