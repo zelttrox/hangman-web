@@ -17,9 +17,8 @@ func CreateWebsite() {
 // Server handler
 func Index(w http.ResponseWriter, r *http.Request) {
 	data := WebData{
-		Title:            "Hangman",
-		Image:            "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp",
-		AttemptedLetters: hg.AttemptedLetters,
+		Title: "Hangman",
+		Image: "web/images/hangman6.png",
 	}
 	tmpl, err := template.ParseFiles(Template)
 	if err != nil {

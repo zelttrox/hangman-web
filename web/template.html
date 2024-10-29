@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="web/style.css">
 
 
-<head>
+<head >
 
 <title> Hangman Web </title>
 
@@ -14,12 +14,13 @@
 
 <body>
 
-<p> {{ .Title }} </p>
+<p> {{.Title}} </p>
 
 <div class="flexMain">
     
     <div class="flex">
         <img src={{.Image}}>
+        
         <p> {{ .AttemptedLetters }} </p>
     </div>
 
@@ -74,7 +75,6 @@
 </body>
 
 <style>
-
 .flexMain {
     display: flex;
     flex-direction: row;
