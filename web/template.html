@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="web/style.css">
 
 
-<head>
+<head >
 
 <title> Hangman Web </title>
 
@@ -16,10 +16,15 @@
 
 <p> {{.Title}} </p>
 
+<body background="images/wallpaper.jpeg">
+    
+
+
 <div class="flexMain">
     
     <div class="flex">
         <img src={{.Image}}>
+        
         <p> {{ .AttemptedLetters }} </p>
     </div>
 
@@ -74,6 +79,15 @@
 </body>
 
 <style>
+
+    body {
+color:black;
+background-color:white;
+background-image:url(images/wallpaper.jpeg);
+background-repeat:no-repeat;
+background-attachment:fixed;
+}
+
 .flexMain {
     display: flex;
     flex-direction: row;

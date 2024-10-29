@@ -14,7 +14,7 @@ func CreateWebsite() {
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	data := WebData{
-		Title: "Hangman",
+		Title: "Hangman League Of Legends",
 		Image: "web/images/hangman6.png",
 	}
 	tmpl, err := template.ParseFiles(Template)
