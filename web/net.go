@@ -8,9 +8,9 @@ import (
 
 // Create the web server
 func CreateWebsite() {
-	Template = "web/template.html"
+	Template = "web/static/template.html"
+	http.Handle("/web/", http.StripPrefix("/web/", http.FileServer(http.Dir("web"))))
 	http.HandleFunc("/", Index)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -18,7 +18,7 @@ func CreateWebsite() {
 func Index(w http.ResponseWriter, r *http.Request) {
 	data := WebData{
 		Title: "Hangman",
-		Image: "web/images/hangman6.png",
+		Image: "web/static/images/hangman6.png",
 	}
 	tmpl, err := template.ParseFiles(Template)
 	if err != nil {
