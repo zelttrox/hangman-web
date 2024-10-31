@@ -2,7 +2,6 @@ package server
 
 import (
 	"fmt"
-	hg "main/scripts"
 	"net/http"
 	"text/template"
 )

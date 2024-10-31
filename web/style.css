@@ -8,12 +8,20 @@
     flex-direction: column;
 }
 
-.btnLetter {
-    background-color: rgba(185, 143, 110, 0.651);
-    border-color: rgba(120, 93, 72, 0.651);
-    border-radius: 3px;
-    box-shadow: rgba(74, 59, 48, 0.406) 1px 1px 1px 1px;
-}
+#letter-container button {
+    height: 2.4em;
+    width: 2.4em;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+  .letter-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em;
+  }
 
 .btnGuess {
     background-color: rgba(191, 120, 66, 0.651);
