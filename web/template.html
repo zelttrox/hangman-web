@@ -16,87 +16,79 @@
 
 <p> {{.Title}} </p>
 
-<div class="flexMain">
-    
-    <div class="flex">
-        <img src={{.Image}}>
-        
-        <p> {{ .AttemptedLetters }} </p>
-    </div>
+<body>
 
-    <div class="flex" style="width: 300px;">
+    <h1>Jeu du Pendu</h1>
+    <div id="alphabet"></div>
+    <div id="message"></div>
 
-        <div style="display: flex; flex-direction: row; justify-content: space-around;">
-            <button class="btnLetter"> A </button>
-            <button class="btnLetter"> B </button>
-            <button class="btnLetter"> C </button>
-            <button class="btnLetter"> D </button>
-            <button class="btnLetter"> E </button>
-            <button class="btnLetter"> F </button>
-            <button class="btnLetter"> G </button>
-            <button class="btnLetter"> H </button>
-            <button class="btnLetter"> I </button>
-            <button class="btnLetter"> J </button>
-        </div>
+    <script>
+        // Fonction pour générer les boutons de lettres
+        function generateAlphabetButtons() {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const alphabetContainer = document.getElementById('alphabet');
 
-        <br>
+            // Création d'un bouton pour chaque lettre
+            alphabet.split('').forEach(letter => {
+                const button = document.createElement('button');
+                button.innerHTML = letter;
+                button.classList.add('letter-btn');
+                button.addEventListener('click', function () {
+                    handleLetterClick(button, letter);
+                });
+                alphabetContainer.appendChild(button);
+            });
+        }
 
-        <div style="display: flex; flex-direction: row; justify-content: space-around;">
-            <button class="btnLetter"> K </button>
-            <button class="btnLetter"> L </button>
-            <button class="btnLetter"> M </button>
-            <button class="btnLetter"> N </button>
-            <button class="btnLetter"> O </button>
-            <button class="btnLetter"> P </button>
-            <button class="btnLetter"> Q </button>
-            <button class="btnLetter"> R </button>
-            <button class="btnLetter"> S </button>
-            <button class="btnLetter"> T </button>
-        </div>
+        // Fonction qui gère ce qui se passe lorsqu'on clique sur une lettre
+        function handleLetterClick(button, letter) {
+            // Désactiver le bouton pour éviter de cliquer plusieurs fois
+            button.disabled = true;
 
-        <br>
+            // Affichage d'un message de la lettre choisie
+            const message = document.getElementById('message');
+            message.textContent = `Vous avez cliqué sur la lettre: ${letter}`;
 
-        <div style="display: flex; flex-direction: row; justify-content: space-around; width: 200px;">
-            <button class="btnLetter"> U </button>
-            <button class="btnLetter"> V </button>
-            <button class="btnLetter"> W </button>
-            <button class="btnLetter"> X </button>
-            <button class="btnLetter"> Y </button>
-            <button class="btnLetter"> Z </button>
-        </div>
+            // Vous pouvez ajouter ici la logique pour vérifier si la lettre est dans le mot à deviner
+            // Exemple: if (motADeviner.includes(letter)) {...} else {...}
+        }
 
-        <br>
+        // Initialisation du jeu et génération des boutons
+        generateAlphabetButtons();
+    </script>
 
-        <button class="btnGuess"> Guess Word </button>
-    </div>
-
-</div>
-    
 </body>
+    
+
 
 <style>
-.flexMain {
-    display: flex;
-    flex-direction: row;
-}
-
-.flex {
-    display: flex;
-    flex-direction: column;
-}
-
-.btnLetter {
-    background-color: rgba(185, 143, 110, 0.651);
-    border-color: rgba(120, 93, 72, 0.651);
-    border-radius: 3px;
-    box-shadow: rgba(74, 59, 48, 0.406) 1px 1px 1px 1px;
-}
-
-.btnGuess {
-    background-color: rgba(191, 120, 66, 0.651);
-    border-color: rgba(120, 93, 72, 0.651);
-    border-radius: 3px;
-    box-shadow: rgba(70, 38, 15, 0.607) 1px 1px 1px 1px;
-}
-
+ 
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #alphabet {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px;
+        }
+        .letter-btn {
+            font-size: 20px;
+            padding: 10px 15px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+        .letter-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    
 </style>
