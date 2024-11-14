@@ -1,5 +1,10 @@
 package hangman
 
+import (
+	"strings"
+	web "main/web"
+)
+
 // Guess one letter at a time
 func GuessLetter(input string) {
 	Guess := false
@@ -12,7 +17,7 @@ func GuessLetter(input string) {
 	if (!Guess){
 		AttemptProgress()
 	}
-	//CheckWord()
+	CheckWord()
 }
 
 // Guess full word, one-time use
@@ -26,26 +31,27 @@ func AttemptProgress() {
 	HangmanProgress = HangmanPosition[10-Attempts]
 }
 
-// func CheckWord() {
-// 	if WordProgress == Word {
-// 		Win()
-// 	} else if !(WordProgress == Word) {
-// 		Lose()
-// 	}
-// }
+func CheckWord() {
+	CurrentWord = strings.Join(WordProgress,"")
+	if CurrentWord == Word {
+		Win()
+	} else if !(CurrentWord == Word) {
+		Lose()
+	}
+}
 
 func LoadPage(page string) {
-
+	web.Template = page
 }
 
 func Play() {
-	LoadPage(MainPage)
+	LoadPage(web.MainPage)
 }
 
 func Win() {
-	LoadPage(WinPage)
+	LoadPage(web.WinPage)
 }
 
 func Lose() {
-	LoadPage(LosePage)
+	LoadPage(web.LosePage)
 }

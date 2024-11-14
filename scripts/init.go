@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"strings"
+	web "main/web"
 )
 
 // Import du dictionnaire dans un tableau de string
@@ -62,7 +63,15 @@ func InitHangmanProgress() {
 	}
 }
 
-// Initialisation des fonctions
+// Initialisation of pages
+
+func InitPages() {
+	web.MainPage = ""
+	web.WinPage = ""
+	web.LosePage = ""
+}
+
+// Initialisation of fonctions
 func Init() {
 
 	IsRunning = false
