@@ -1,91 +1,51 @@
 package hangman
 
-import (
-	"fmt"
-	"strings"
-)
-
-// Fonction principale du jeu
-func Run() {
-
-	IsRunning = true
-
-	for {
-		fmt.Scanln(&Input)
-		Input = strings.ToUpper(Input)
-
-		// Vérifie si l'input est un mot ou une lettre
-		if len(Input) > 1 {
-			if Input == Word {
-				Win()
-			} else if Input != Word {
-				Attempts -= 2
-				HangmanProgress += HangmanLen
-				ProcessHangman()
-				SpaceOut(1)
-				fmt.Println("\033[33m", "The word is not", Input, "Try again!", "\033[0m")
-				fmt.Println(" You lost 2 attemps.", "\n", "")
-			}
-		}
-
-		// Ajout des lettres devinées dans le mot
-		for _, inputletter := range Input {
-			guess := false
-			for i, wordletter := range Word {
-				if inputletter == wordletter {
-					Blankspace[i] = string(inputletter)
-					guess = true
-				}
-			}
-
-			// Vérifie si la lettre entrée a déjà été essayée ou si elle est fausse
-			if !guess && len(Input) == 1 {
-				CheckAttempted(Input)
-				if LetterTried {
-					fmt.Println("You've already guessed that letter. Try again!")
-					LetterTried = false
-				} else if !LetterTried {
-					Attempts--
-					ProcessHangman()
-					AttemptedLetters = append(AttemptedLetters, Input)
-				}
-			}
-		}
-		// Affiche les lettres déjà essayées
-		fmt.Println(Blankspace, "\n \n Attempts left: ", Attempts)
-		fmt.Println("Attempted Letter(s): ", "\033[36m", AttemptedLetters, "\033[0m")
-		SpaceOut(4)
-
-		// Condition de perte
-		if Attempts <= 0 {
-			Lose()
-			break
-		}
-		// Condition de victoire
-		if Word == strings.Join(Blankspace, "") {
-			Win()
-			break
+// Guess one letter at a time
+func GuessLetter(input string) {
+	Guess := false
+	for i, WordLetter := range Word {
+		if input == string(WordLetter) {
+			Guess = true
+			WordProgress[i] = string(input)
 		}
 	}
-}
-
-// Vérifie si la lettre entrée a déjà été essayée
-func CheckAttempted(input string) {
-	for i := 0; i < len(AttemptedLetters); i++ {
-		if input == AttemptedLetters[i] {
-			LetterTried = true
-		}
+	if (!Guess){
+		AttemptProgress()
 	}
+	//CheckWord()
 }
 
-// Fonction de lose
-func Lose() {
-	fmt.Println(ToAsciiArt(Word))
-	fmt.Print("</3, - AHHAHAHA YOU LOST!", Word)
+// Guess full word, one-time use
+func GuessWord(input string) {
+
 }
 
-// Fonction de victoire
+// Counts down attempts and progresses hangman figure
+func AttemptProgress() {
+	Attempts--
+	HangmanProgress = HangmanPosition[10-Attempts]
+}
+
+// func CheckWord() {
+// 	if WordProgress == Word {
+// 		Win()
+// 	} else if !(WordProgress == Word) {
+// 		Lose()
+// 	}
+// }
+
+func LoadPage(page string) {
+
+}
+
+func Play() {
+	LoadPage(MainPage)
+}
+
 func Win() {
-	fmt.Println(ToAsciiArt(Word))
-	fmt.Printf(" <3 %d, - GG YOU WON! \n", Attempts)
+	LoadPage(WinPage)
+}
+
+func Lose() {
+	LoadPage(LosePage)
 }
