@@ -2,7 +2,6 @@ package hangman
 
 import (
 	"strings"
-	web "main/web"
 )
 
 // Guess one letter at a time
@@ -15,7 +14,8 @@ func GuessLetter(input string) {
 		}
 	}
 	if !Guess {
-		AttemptProgress()
+		AttemptProgress(1)
+		AddToAttempted(input)
 	}
 	CheckWord()
 }
@@ -23,19 +23,18 @@ func GuessLetter(input string) {
 // Guess full word, one-time use
 func GuessWord(input string) {
 	if OneShot {
-		if input == Word{
+		if input == Word {
 			Win()
 		} else {
-			AttemptProgress()
-			AttemptProgress()
+			AttemptProgress(2)
 		}
 		OneShot = !OneShot
 	}
 }
 
 // Counts down attempts and progresses hangman figure
-func AttemptProgress() {
-	Attempts--
+func AttemptProgress(progress int) {
+	Attempts = Attempts - progress
 	HangmanProgress = HangmanPosition[10-Attempts]
 }
 
@@ -48,18 +47,32 @@ func CheckWord() {
 	}
 }
 
+func AddToAttempted(letter string) {
+	isLetterTried := false
+	for i := 0; i < len(AttemptedLetters); i++ {
+		if letter == AttemptedLetters[i] {
+			isLetterTried = true
+		}
+	}
+	if !isLetterTried {
+		AttemptedLetters = append(AttemptedLetters, letter)
+		AttemptedDisplay = strings.Join(AttemptedLetters, ", ")
+		isLetterTried = false
+	}
+}
+
 func LoadPage(page string) {
-	web.Template = page
+	Template = page
 }
 
 func Play() {
-	LoadPage(web.MainPage)
+	LoadPage(MainPage)
 }
 
 func Win() {
-	LoadPage(web.WinPage)
+	LoadPage(WinPage)
 }
 
 func Lose() {
-	LoadPage(web.LosePage)
+	LoadPage(LosePage)
 }

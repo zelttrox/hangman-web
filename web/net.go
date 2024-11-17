@@ -2,14 +2,14 @@ package server
 
 import (
 	"fmt"
-	hangman "main/scripts"
 	"net/http"
 	"text/template"
+	hang "main/scripts"
 )
 
 // Create the web server
 func CreateWebsite() {
-	Template = "web/win.html"
+	hang.Template = "web/win.html"
 	http.HandleFunc("/", Index)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":8080", nil)
@@ -21,13 +21,13 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	// GET Request
 	data := WebData{
 		Title:            "Hangman",
-		Image:            hangman.HangmanProgress,
-		WordChosen:       hangman.Word,
-		AttemptedLetters: hangman.Attempted,
+		Image:            hang.HangmanProgress,
+		WordChosen:       hang.Word,
+		AttemptedLetters: hang.Attempted,
 	}
 
 	// HTML File parsing
-	tmpl, err := template.ParseFiles(hangman.Template)
+	tmpl, err := template.ParseFiles(hang.Template)
 	if err != nil {
 		fmt.Println("Error")
 	}
@@ -40,7 +40,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		input := r.FormValue("letter")
 		wordInput := r.Form.Get("word")
 
-		hangman.Input = input
-		hangman.WordInput = wordInput
+		hang.Input = input
+		hang.WordInput = wordInput
 	}
 }
