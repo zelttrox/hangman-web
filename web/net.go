@@ -9,7 +9,7 @@ import (
 
 // Create the web server
 func CreateWebsite() {
-	hangman.Template = "web/template.html"
+	Template = "web/win.html"
 	http.HandleFunc("/", Index)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":8080", nil)

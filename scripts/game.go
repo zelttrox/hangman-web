@@ -2,6 +2,7 @@ package hangman
 
 import (
 	"strings"
+	web "main/web"
 )
 
 // Guess one letter at a time
@@ -21,7 +22,15 @@ func GuessLetter(input string) {
 
 // Guess full word, one-time use
 func GuessWord(input string) {
-
+	if OneShot {
+		if input == Word{
+			Win()
+		} else {
+			AttemptProgress()
+			AttemptProgress()
+		}
+		OneShot = !OneShot
+	}
 }
 
 // Counts down attempts and progresses hangman figure
@@ -40,17 +49,17 @@ func CheckWord() {
 }
 
 func LoadPage(page string) {
-	Template = page
+	web.Template = page
 }
 
 func Play() {
-	LoadPage(MainPage)
+	LoadPage(web.MainPage)
 }
 
 func Win() {
-	LoadPage(WinPage)
+	LoadPage(web.WinPage)
 }
 
 func Lose() {
-	LoadPage(LosePage)
+	LoadPage(web.LosePage)
 }
