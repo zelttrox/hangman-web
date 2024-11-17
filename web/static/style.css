@@ -1,23 +1,27 @@
-.flexMain {
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#alphabet {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
 }
-
-.flex {
-    display: flex;
-    flex-direction: column;
+.letter-btn {
+    font-size: 20px;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    cursor: pointer;
 }
-
-.btnLetter {
-    background-color: rgba(185, 143, 110, 0.651);
-    border-color: rgba(120, 93, 72, 0.651);
-    border-radius: 3px;
-    box-shadow: rgba(74, 59, 48, 0.406) 1px 1px 1px 1px;
+.letter-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
-
-.btnGuess {
-    background-color: rgba(191, 120, 66, 0.651);
-    border-color: rgba(120, 93, 72, 0.651);
-    border-radius: 3px;
-    box-shadow: rgba(70, 38, 15, 0.607) 1px 1px 1px 1px;
+#message {
+    margin-top: 20px;
+    font-size: 20px;
 }

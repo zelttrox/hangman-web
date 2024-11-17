@@ -2,14 +2,14 @@ package server
 
 import (
 	"fmt"
+	hang "main/scripts"
 	"net/http"
 	"text/template"
-	hang "main/scripts"
 )
 
 // Create the web server
 func CreateWebsite() {
-	hang.Template = "web/win.html"
+	hang.Template = "web/template.html"
 	http.HandleFunc("/", Index)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":8080", nil)
@@ -23,7 +23,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		Title:            "Hangman",
 		Image:            hang.HangmanProgress,
 		WordChosen:       hang.Word,
-		AttemptedLetters: hang.Attempted,
+		AttemptedLetters: hang.AttemptedDisplay,
 	}
 
 	// HTML File parsing
