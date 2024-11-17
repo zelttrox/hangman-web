@@ -75,6 +75,7 @@ func InitPages() {
 func Init() {
 
 	IsRunning = false
+	OneShot = true
 
 	GetArg()
 
