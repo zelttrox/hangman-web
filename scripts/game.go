@@ -87,3 +87,13 @@ func Win() {
 func Lose() {
 	LoadPage(LosePage)
 }
+
+// Main function to run the game
+func Run() {
+	if len(WordInput) > 0 {
+		GuessWord(WordInput)
+		WordInput = ""
+	} else {
+		GuessLetter(Input)
+	}
+}
