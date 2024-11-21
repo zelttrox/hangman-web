@@ -38,6 +38,7 @@ func AttemptProgress(progress int) {
 	HangmanProgress = HangmanPosition[10-Attempts]
 }
 
+// Check if the word progress matches the word to guess
 func CheckWord() {
 	CurrentWord = strings.Join(WordProgress, "")
 	if CurrentWord == Word {
@@ -47,6 +48,7 @@ func CheckWord() {
 	}
 }
 
+// Add the guessed letter to the letters attempted
 func AddToAttempted(letter string) {
 	isLetterTried := false
 	for i := 0; i < len(AttemptedLetters); i++ {
@@ -61,18 +63,27 @@ func AddToAttempted(letter string) {
 	}
 }
 
+// Load a page on the website
 func LoadPage(page string) {
 	Template = page
 }
 
+// Load home page
+func Home() {
+	LoadPage(HomePage)
+}
+
+// load game
 func Play() {
 	LoadPage(MainPage)
 }
 
+// Load win screen
 func Win() {
 	LoadPage(WinPage)
 }
 
+// Load lose screen
 func Lose() {
 	LoadPage(LosePage)
 }
