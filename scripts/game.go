@@ -93,7 +93,8 @@ func Run() {
 	if len(WordInput) > 0 {
 		GuessWord(WordInput)
 		WordInput = ""
-	} else {
+	} else if len(Input) > 0 {
 		GuessLetter(Input)
+		Input = ""
 	}
 }

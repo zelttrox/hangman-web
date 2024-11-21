@@ -13,8 +13,10 @@
 <body>
 
     <h1>Jeu du Pendu</h1>
-    <div id="alphabet"></div>
-    <div id="message"></div>GetHangmanList("files/hangman.txt")
+    <form action="/" id="alphabet">
+    </form>
+    <div id="message"></div>
+
 
     <script>
         // Fonction pour générer les boutons de lettres
@@ -24,12 +26,15 @@
 
             // Création d'un bouton pour chaque lettre
             alphabet.split('').forEach(letter => {
-                const button = document.createElement('button');
+                const button = document.createElement('input');
                 button.innerHTML = letter;
                 button.classList.add('letter-btn');
-                button.addEventListener('click', function () {
-                    handleLetterClick(button, letter);
-                });
+                button.type = "submit"
+                button.name = "letter"
+                button.value = letter
+                //button.addEventListener('click', function () {
+                //    handleLetterClick(button, letter);
+                //});
                 alphabetContainer.appendChild(button);
             });
         }
@@ -52,11 +57,8 @@
     </script>
 
         <button class="btnGuess"> Guess Word </button>
-    </div>
 </body>
     
-
-
 <style>
  
         body {

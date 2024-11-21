@@ -65,9 +65,10 @@ func InitHangmanProgress() {
 // Initialisation of pages
 
 func InitPages() {
-	MainPage = ""
-	WinPage = ""
-	LosePage = ""
+	HomePage = "web/html/menu.html"
+	MainPage = "web/html/game.html"
+	WinPage = "web/html/win.html"
+	LosePage = "web/html/lose.html"
 }
 
 // Initialisation of fonctions
