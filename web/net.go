@@ -11,8 +11,7 @@ import (
 func CreateWebsite() {
 	hang.Template = "web/game.html"
 	http.HandleFunc("/", Index)
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -21,10 +20,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	// GET Request
 	data := WebData{
-		Title:            "Hangman",
-		Image:            hang.HangmanProgress,
-		WordChosen:       hang.Word,
-		AttemptedLetters: hang.AttemptedDisplay,
+		Title:    "Hangman",
+		Image:    hang.HangmanProgress,
+		Progress: hang.CurrentWord,
 	}
 
 	// POST Request

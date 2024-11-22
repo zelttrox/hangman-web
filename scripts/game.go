@@ -45,7 +45,6 @@ func AttemptProgress(progress int) {
 
 // Check if the word progress matches the word to guess
 func CheckWord() {
-	CurrentWord = strings.Join(WordProgress, "")
 	if CurrentWord == Word {
 		Win()
 	} else if !(CurrentWord == Word) {
@@ -106,5 +105,6 @@ func Run() {
 	} else if len(Input) > 0 {
 		GuessLetter(Input)
 	}
+	CurrentWord = strings.Join(WordProgress, "")
 	ResetInput()
 }
