@@ -23,13 +23,13 @@ func GuessLetter(input string) {
 
 // Guess full word, one-time use
 func GuessWord(input string) {
-	if OneShot {
+	if !GuessTried {
 		if input == Word {
 			Win()
 		} else {
 			AttemptProgress(2)
 		}
-		OneShot = !OneShot
+		GuessTried = true
 	}
 }
 

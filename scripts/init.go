@@ -75,7 +75,7 @@ func InitPages() {
 // Initialisation of fonctions
 func Init() {
 
-	OneShot = true
+	GuessTried = true
 	MaxAttempts = 10
 	Attempts = MaxAttempts
 	Dictionary = "files/league.txt"

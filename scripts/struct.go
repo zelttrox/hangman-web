@@ -27,4 +27,4 @@ var WinPage string  // Winning page
 var LosePage string // Losing page
 
 var IsHardcoreMode bool // Défini si le jeu est en mode hardcore ou en normal
-var OneShot bool
+var GuessTried bool
