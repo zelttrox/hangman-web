@@ -9,7 +9,7 @@ import (
 
 // Create the web server
 func CreateWebsite() {
-	hang.Template = "web/html/game.html"
+	hang.Template = "web/game.html"
 	http.HandleFunc("/", Index)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":8080", nil)
@@ -26,14 +26,6 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		AttemptedLetters: hang.AttemptedDisplay,
 	}
 
-	// HTML File parsing
-	tmpl, err := template.ParseFiles(hang.Template)
-	if err != nil {
-		fmt.Println("Error")
-	}
-
-	tmpl.Execute(w, data)
-
 	// POST Request
 	if r.Method == http.MethodPost {
 
@@ -42,8 +34,13 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		hang.Input = input
 		hang.WordInput = wordInput
+		fmt.Println("letter: ", hang.Input)
 	}
-	d := r.FormValue("letter")
-	fmt.Print("letter: ", d)
-	hang.Run()
+	// HTML File parsing
+	tmpl, err := template.ParseFiles(hang.Template)
+	if err != nil {
+		fmt.Println("Error")
+	}
+
+	tmpl.Execute(w, data)
 }
