@@ -3,6 +3,7 @@ package hangman
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"math/rand"
 	"os"
 	"strings"
@@ -65,24 +66,24 @@ func InitHangmanProgress() {
 // Initialisation of pages
 
 func InitPages() {
-	HomePage = "web/html/menu.html"
-	MainPage = "web/html/game.html"
-	WinPage = "web/html/win.html"
-	LosePage = "web/html/lose.html"
+	HomePage = "web/menu.html"
+	MainPage = "web/game.html"
+	WinPage = "web/win.html"
+	LosePage = "web/lose.html"
 }
 
 // Initialisation of fonctions
 func Init() {
 
 	OneShot = true
-
-	GetArg()
-
-	Dictionary = "files/league.txt"
 	MaxAttempts = 10
+	Attempts = MaxAttempts
+	Dictionary = "files/league.txt"
 
 	GetWordList(Dictionary)
 	GetWord()
 
 	InitWordProgress()
+
+	fmt.Println("word: ", Word)
 }

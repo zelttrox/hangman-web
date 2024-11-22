@@ -29,18 +29,32 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	// POST Request
 	if r.Method == http.MethodPost {
 
-		input := r.FormValue("letter")
-		wordInput := r.Form.Get("word")
+		hang.Input = r.FormValue("letter")
+		hang.WordInput = r.Form.Get("word")
 
-		hang.Input = input
-		hang.WordInput = wordInput
-		fmt.Println("letter: ", hang.Input)
+		hang.Run()
+
+		// DEBUG
+		fmt.Println("current word: ", hang.WordProgress)
+		fmt.Println("word to guess: ", hang.Word)
+		fmt.Println("hangman pos: ", hang.HangmanPosition)
+		fmt.Println("attempts: ", hang.Attempts)
 	}
+
+	hang.Template = "web/game.html"
+
 	// HTML File parsing
 	tmpl, err := template.ParseFiles(hang.Template)
 	if err != nil {
-		fmt.Println("Error")
+		fmt.Println("Error parsing template:", err)
+		fmt.Println("Template path: ", hang.Template)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 
-	tmpl.Execute(w, data)
+	err = tmpl.Execute(w, data)
+	if err != nil {
+		fmt.Println("Error executing template:", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
 }
