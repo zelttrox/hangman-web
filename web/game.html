@@ -10,17 +10,22 @@
 </head>
 <body>
 
-<p> {{.Title}} </p>
+    <div class="game-container">
+    <p class="text"> {{.Title}} </p>
 
-<body>
+    <h1 class="text">Jeu du Pendu</h1>
 
-    <h1>Jeu du Pendu</h1>
-    <div id="message"></div>
-    <img src={{.Image}}>
-    <p> {{.Progress}} </p>
-    <div id="alphabet"></div>
+    <div class="hangman">
+        <img src={{.Image}}>
+    </div>
 
-    <button class="btnGuess"> Guess Word </button>
+        <p class="text"> {{.Progress}} </p>
+
+    <div id="alphabet">  
+    </div>
+
+    <button class="guess-btn"> Guess Word </button>
+    </div>
 
 </body>
 
@@ -51,10 +56,6 @@ function handleLetterClick(button, letter) {
     // Désactiver le bouton pour éviter de cliquer plusieurs fois
     button.disabled = true;
 
-    // Affichage d'un message de la lettre choisie
-    const message = document.getElementById('message');
-    message.textContent = `Vous avez cliqué sur la lettre: ${letter}`;
-
     // Envoi de la lettre au serveur via AJAX
     fetch('/', {
         method: 'POST',
@@ -66,7 +67,6 @@ function handleLetterClick(button, letter) {
     .then(response => response.text())
     .then(data => {
         console.log(data);
-        // Vous pouvez ajouter ici la logique pour mettre à jour l'interface utilisateur
     })
     .catch(error => console.error('Error:', error));
 }
