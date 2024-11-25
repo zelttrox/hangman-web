@@ -8,15 +8,22 @@
 </head>
 <body>
 
-<p> {{.Title}} </p>
-
 <body>
     <video autoplay muted loop id="myVideo">
-        <source src="static\victory_anim.mp4" type="video/mp4">
+        <source class="video" src="static\victory_anim.mp4" type="video/mp4">
     </video>
 
- 
+    <style>
+
+        body {
+            display: flexbox;
+            justify-content: center;
+        }
+
+        .video {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+
 </body>
-    
-
-

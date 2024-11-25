@@ -11,12 +11,10 @@
 <body>
 
     <div class="game-container">
-    <p class="text"> {{.Title}} </p>
-
-    <h1 class="text">Jeu du Pendu</h1>
+    <h1 class="text">{{.Title}}</h1>
 
     <div class="hangman">
-        <img id="hangman-image" src={{.Image}}>
+        <img id="hangman-image" class="hangman" src={{.Image}}>
     </div>
 
         <p id="word-progress" class="text"> {{.Progress}} </p>
