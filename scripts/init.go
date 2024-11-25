@@ -50,16 +50,16 @@ func InitWordProgress() {
 
 func InitHangmanProgress() {
 	HangmanPosition = []string{
-		"web/static/images/HangmanPositions/Hangman_1.png",
-		"web/static/images/hangman-positions/Hangman_2.png",
-		"web/static/images/hangman-positions/Hangman_3.png",
-		"web/static/images/hangman-positions/Hangman_4.png",
-		"web/static/images/hangman-positions/Hangman_5.png",
-		"web/static/images/hangman-positions/Hangman_6.png",
-		"web/static/images/hangman-positions/Hangman_7.png",
-		"web/static/images/hangman-positions/Hangman_8.png",
-		"web/static/images/hangman-positions/Hangman_9.png",
-		"web/static/images/hangman-positions/Hangman_10.png",
+		"/static/images/HangmanPositions/Hangman_1.png",
+		"/static/images/hangman-positions/Hangman_2.png",
+		"/static/images/hangman-positions/Hangman_3.png",
+		"/static/images/hangman-positions/Hangman_4.png",
+		"/static/images/hangman-positions/Hangman_5.png",
+		"/static/images/hangman-positions/Hangman_6.png",
+		"/static/images/hangman-positions/Hangman_7.png",
+		"/static/images/hangman-positions/Hangman_8.png",
+		"/static/images/hangman-positions/Hangman_9.png",
+		"/static/images/hangman-positions/Hangman_10.png",
 	}
 }
 
@@ -84,6 +84,7 @@ func Init() {
 	GetWord()
 
 	InitWordProgress()
+	InitHangmanProgress()
 
 	fmt.Println("word: ", Word)
 }

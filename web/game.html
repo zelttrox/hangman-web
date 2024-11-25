@@ -16,10 +16,10 @@
     <h1 class="text">Jeu du Pendu</h1>
 
     <div class="hangman">
-        <img src={{.Image}}>
+        <img id="hangman-image" src={{.Image}}>
     </div>
 
-        <p class="text"> {{.Progress}} </p>
+        <p id="word-progress" class="text"> {{.Progress}} </p>
 
     <div id="alphabet">  
     </div>
@@ -53,10 +53,10 @@ function generateAlphabetButtons() {
 
 // Fonction qui gère ce qui se passe lorsqu'on clique sur une lettre
 function handleLetterClick(button, letter) {
-    // Désactiver le bouton pour éviter de cliquer plusieurs fois
+    // Disable the button to prevent multiple clicks
     button.disabled = true;
 
-    // Envoi de la lettre au serveur via AJAX
+    // Send the letter to the server via AJAX
     fetch('/', {
         method: 'POST',
         headers: {
@@ -64,13 +64,15 @@ function handleLetterClick(button, letter) {
         },
         body: `letter=${letter}`
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // Update the image and progress elements with the new data
+        document.getElementById('hangman-image').src = data.Image;
+        document.getElementById('word-progress').textContent = data.Progress;
     })
     .catch(error => console.error('Error:', error));
 }
 
-generateAlphabetButtons()
+generateAlphabetButtons();
 
 </script>

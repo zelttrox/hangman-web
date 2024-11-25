@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"fmt"
 	hang "main/scripts"
 	"net/http"
@@ -38,6 +39,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("word to guess: ", hang.Word)
 		fmt.Println("hangman pos: ", hang.HangmanPosition)
 		fmt.Println("attempts: ", hang.Attempts)
+		fmt.Println("image: ", hang.HangmanProgress)
+
+		data.Image = hang.HangmanProgress
+		data.Progress = hang.CurrentWord
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(data)
+		return
 	}
 
 	hang.Template = "web/game.html"
