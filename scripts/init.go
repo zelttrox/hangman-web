@@ -75,8 +75,12 @@ func InitPages() {
 // Initialisation of fonctions
 func Init() {
 
+	InitPages()
+
+	Template = MainPage
+
 	GuessTried = true
-	MaxAttempts = 10
+	MaxAttempts = 9
 	Attempts = MaxAttempts
 	Dictionary = "files/league.txt"
 
