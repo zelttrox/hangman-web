@@ -1,6 +1,7 @@
 package hangman
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -34,12 +35,12 @@ func GuessWord(input string) {
 
 // Counts down attempts and progresses hangman figure
 func AttemptProgress(progress int) {
-	if Attempts > 0 {
-		Attempts = Attempts - progress
-		HangmanProgress = HangmanPosition[10-Attempts]
-	} else {
-		Lose()
+	Attempts = Attempts - progress
+	if Attempts < 0 || Attempts >= len(HangmanPosition) {
+		fmt.Println("Error: Attempts out of range")
+		return
 	}
+	HangmanProgress = HangmanPosition[10-Attempts]
 }
 
 // Check if the word progress matches the word to guess
