@@ -29,8 +29,13 @@ body {
 .hangman {
     border: 2px solid #333;
     border-radius: 5px;
-    width:45%;
+    width: 45%;
     height: 45%;
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
 }
 
 .letter-btn {
@@ -58,7 +63,7 @@ body {
 }
 
 .guess-btn:hover {
-    border-image: linear-gradient(to right, #c76b09, rgb(207, 204, 34)) 1;
+    border-image: linear-gradient(to right, #0981c7, rgb(34, 201, 207)) 1;
     background-color: #272727;
 }
 
@@ -68,7 +73,7 @@ body {
     background-color: #f4f4f4;
     cursor: pointer;
     border: 2px solid;
-    border-image: linear-gradient(to right, #7a4205, rgb(122, 121, 20)) 1;
+    border-image: linear-gradient(to right, #05687a, rgb(20, 122, 122)) 1;
     background-color: #222222;
     color: white;
     font-weight: 700;

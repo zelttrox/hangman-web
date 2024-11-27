@@ -45,9 +45,12 @@ func AttemptProgress(progress int) {
 
 // Check if the word progress matches the word to guess
 func CheckWord() {
+	CurrentWord = strings.Join(WordProgress, "")
+	fmt.Println("current word: ", CurrentWord)
+	fmt.Println("word to find: ", Word)
 	if CurrentWord == Word {
 		Win()
-	} else if !(CurrentWord == Word) {
+	} else if CurrentWord != Word && Attempts <= 0 {
 		Lose()
 	}
 }
@@ -70,6 +73,7 @@ func AddToAttempted(letter string) {
 // Load a page on the website
 func LoadPage(page string) {
 	Template = page
+	fmt.Println("webpage is now ", page)
 }
 
 // Load home page
@@ -85,11 +89,13 @@ func Play() {
 // Load win screen
 func Win() {
 	LoadPage(WinPage)
+	fmt.Println("Win")
 }
 
 // Load lose screen
 func Lose() {
 	LoadPage(LosePage)
+	fmt.Println("Lose")
 }
 
 // Sets letter and word input back to blank
@@ -105,6 +111,5 @@ func Run() {
 	} else if len(Input) > 0 {
 		GuessLetter(Input)
 	}
-	CurrentWord = strings.Join(WordProgress, "")
 	ResetInput()
 }

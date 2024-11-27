@@ -10,7 +10,7 @@ import (
 
 // Create the web server
 func CreateWebsite() {
-	hang.Template = "web/game.html"
+	Template = hang.Template
 	http.HandleFunc("/", Index)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 	http.ListenAndServe(":8080", nil)
@@ -18,10 +18,9 @@ func CreateWebsite() {
 
 // Server handler
 func Index(w http.ResponseWriter, r *http.Request) {
-
+	Template = hang.Template
 	// GET Request
 	data := WebData{
-		Title:    "Hangman",
 		Image:    hang.HangmanProgress,
 		Progress: hang.CurrentWord,
 	}
@@ -35,11 +34,8 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		hang.Run()
 
 		// DEBUG
-		fmt.Println("current word: ", hang.WordProgress)
-		fmt.Println("word to guess: ", hang.Word)
-		fmt.Println("hangman pos: ", hang.HangmanPosition)
 		fmt.Println("attempts: ", hang.Attempts)
-		fmt.Println("image: ", hang.HangmanProgress)
+		fmt.Println(Template)
 
 		data.Image = hang.HangmanProgress
 		data.Progress = hang.CurrentWord
@@ -52,10 +48,10 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	hang.Template = "web/game.html"
 
 	// HTML File parsing
-	tmpl, err := template.ParseFiles(hang.Template)
+	tmpl, err := template.ParseFiles(Template)
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
-		fmt.Println("Template path: ", hang.Template)
+		fmt.Println("Template path: ", Template)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
