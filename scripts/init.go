@@ -2,7 +2,6 @@ package hangman
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"math/rand"
 	"os"
@@ -29,16 +28,6 @@ func GetWordList(path string) ([]string, error) {
 func GetWord() {
 	Word = WordList[rand.Intn(len(WordList))]
 	Word = strings.ToUpper(Word)
-}
-
-// Scan des arguments choisis dans le terminal
-func GetArg() {
-	argHardcore := flag.Bool("hard", false, "Hardcore mode")
-	flag.Parse()
-
-	if *argHardcore {
-		IsHardcoreMode = true
-	}
 }
 
 // Initialisation des cases du Hangman
