@@ -35,6 +35,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		// DEBUG
 		fmt.Println("attempts: ", hang.Attempts)
+		fmt.Println("progress: ", hang.HangmanProgress)
 		fmt.Println(Template)
 
 		data.Image = hang.HangmanProgress

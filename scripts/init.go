@@ -50,7 +50,8 @@ func InitWordProgress() {
 
 func InitHangmanProgress() {
 	HangmanPosition = []string{
-		"/static/images/HangmanPositions/Hangman_1.png",
+		"none",
+		"/static/images/hangman-positions/Hangman_1.png",
 		"/static/images/hangman-positions/Hangman_2.png",
 		"/static/images/hangman-positions/Hangman_3.png",
 		"/static/images/hangman-positions/Hangman_4.png",
@@ -80,7 +81,7 @@ func Init() {
 	Template = MainPage
 
 	GuessTried = true
-	MaxAttempts = 9
+	MaxAttempts = 10
 	Attempts = MaxAttempts
 	Dictionary = "files/league.txt"
 
