@@ -1,6 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #181818;
+    transform: scale(0.75);
+    transform-origin: center;
+    margin-top: -85px;
 }
 
 #alphabet {
@@ -17,25 +20,60 @@ body {
     font-weight: 500;
 }
 
+.text-progress {
+    color: rgb(238, 238, 238);
+    font-size: 30px;
+    font-weight: 700;
+}
+
 .game-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     text-align: center;
+}
+
+.progress-cont {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.controls-cont {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.guess-cont {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 .hangman {
     border: 2px solid #333;
     border-radius: 5px;
-    width: 45%;
-    height: 45%;
+    width: 25%;
+    height: 25%;
 }
 
 .logo {
     width: 10%;
     height: 10%;
+}
+
+.input {
+    font-size: 20px;
+    width: 150px;
+    height: 41px;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #093a72, rgb(21, 85, 128)) 1;
+    background-color: #222222;
+    color: #d4ae2f;
 }
 
 .letter-btn {

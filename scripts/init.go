@@ -67,6 +67,8 @@ func Init() {
 
 	InitPages()
 
+	HangmanProgress = "/static/images/hangman-positions/Hangman_0.png"
+
 	GuessTried = true
 	IsGameOver = false
 
