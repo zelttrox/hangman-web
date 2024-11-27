@@ -85,6 +85,9 @@ func Play() {
 // Load win screen
 func Win() {
 	LoadPage(WinPage)
+	Reset()
+	Init()
+	Play()
 }
 
 // Load lose screen
@@ -97,6 +100,15 @@ func Lose() {
 func ResetInput() {
 	Input = ""
 	WordInput = ""
+}
+
+func Reset() {
+	WordProgress = nil
+	AttemptedLetters = nil
+	CurrentWord = ""
+	AttemptedDisplay = ""
+	HangmanProgress = HangmanPosition[0]
+	ResetInput()
 }
 
 // Main function to run the game

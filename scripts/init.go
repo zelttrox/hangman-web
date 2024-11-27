@@ -67,8 +67,6 @@ func Init() {
 
 	InitPages()
 
-	Template = MainPage
-
 	GuessTried = true
 	IsGameOver = false
 
@@ -81,6 +79,8 @@ func Init() {
 
 	InitWordProgress()
 	InitHangmanProgress()
+
+	Play()
 
 	fmt.Println("word: ", Word)
 }

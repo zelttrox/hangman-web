@@ -23,6 +23,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	data := WebData{
 		Image:    hang.HangmanProgress,
 		Progress: hang.CurrentWord,
+		Attemps:  hang.Attempts,
 	}
 
 	// POST Request
@@ -38,6 +39,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		data.Image = hang.HangmanProgress
 		data.Progress = hang.CurrentWord
+		data.Attemps = hang.Attempts
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(data)

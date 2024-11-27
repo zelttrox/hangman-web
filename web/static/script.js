@@ -1,5 +1,6 @@
 // Fonction pour générer les boutons de lettres
 function generateAlphabetButtons() {
+
     var wordProgress = document.getElementById('word-progress').innerText
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const alphabetContainer = document.getElementById('alphabet');
@@ -21,6 +22,7 @@ function generateAlphabetButtons() {
 
 // Fonction qui gère ce qui se passe lorsqu'on clique sur une lettre
 function handleLetterClick(button, letter) {
+
     // Disable the button to prevent multiple clicks
     button.disabled = true;
 
@@ -32,21 +34,27 @@ function handleLetterClick(button, letter) {
         },
         body: `letter=${letter}`
     })
+
     .then(response => response.json())
+
     .then(data => {
         // Update the image and progress elements with the new data
         document.getElementById('hangman-image').src = data.Image;
-        document.getElementById('word-progress').textContent = data.Progress;
+        document.getElementById('word-progress').textContent = data.Progress
+
+        var attemptsLeft = data.Attempts
         checkProgress()
     })
+
     .catch(error => console.error('Error:', error));
 }
 
 function checkProgress() {
+    
     wordProgress = document.getElementById('word-progress').innerText
     console.log(wordProgress)
 
-    if (!wordProgress.includes('_')) {
+    if (!wordProgress.includes('_') || attemptsLeft <= 0) {
         location.reload()
     }
 }
