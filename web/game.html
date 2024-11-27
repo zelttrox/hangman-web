@@ -27,9 +27,10 @@
 </body>
 
 <script>
-    
+
 // Fonction pour générer les boutons de lettres
 function generateAlphabetButtons() {
+    var wordProgress = document.getElementById('word-progress').innerText
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const alphabetContainer = document.getElementById('alphabet');
 
@@ -68,6 +69,17 @@ function handleLetterClick(button, letter) {
         document.getElementById('word-progress').textContent = data.Progress;
     })
     .catch(error => console.error('Error:', error));
+
+    checkProgress()
+}
+
+function checkProgress() {
+    wordProgress = document.getElementById('word-progress').innerText
+    console.log(wordProgress)
+
+    if (!wordProgress.includes('_')) {
+        location.reload()
+    }
 }
 
 generateAlphabetButtons();

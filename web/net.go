@@ -45,10 +45,6 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	LoadTemplate(w, data)
-
-	if hang.IsGameOver {
-		LoadTemplate(w, data)
-	}
 }
 
 func LoadTemplate(w http.ResponseWriter, data WebData) {
