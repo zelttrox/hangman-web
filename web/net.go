@@ -18,8 +18,8 @@ func CreateWebsite() {
 
 // Server handler
 func Index(w http.ResponseWriter, r *http.Request) {
-	Template = hang.Template
-	// GET Request
+
+	// Use hang.Template directly
 	data := WebData{
 		Image:    hang.HangmanProgress,
 		Progress: hang.CurrentWord,
@@ -34,9 +34,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		hang.Run()
 
 		// DEBUG
-		fmt.Println("attempts: ", hang.Attempts)
-		fmt.Println("progress: ", hang.HangmanProgress)
-		fmt.Println(Template)
+		fmt.Println(hang.Template)
 
 		data.Image = hang.HangmanProgress
 		data.Progress = hang.CurrentWord
@@ -46,13 +44,19 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	hang.Template = "web/game.html"
+	LoadTemplate(w, data)
 
+	if hang.IsGameOver {
+		LoadTemplate(w, data)
+	}
+}
+
+func LoadTemplate(w http.ResponseWriter, data WebData) {
 	// HTML File parsing
-	tmpl, err := template.ParseFiles(Template)
+	tmpl, err := template.ParseFiles(hang.Template)
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
-		fmt.Println("Template path: ", Template)
+		fmt.Println("Template path: ", hang.Template)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}

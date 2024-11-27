@@ -81,6 +81,8 @@ func Init() {
 	Template = MainPage
 
 	GuessTried = true
+	IsGameOver = false
+
 	MaxAttempts = 10
 	Attempts = MaxAttempts
 	Dictionary = "files/league.txt"

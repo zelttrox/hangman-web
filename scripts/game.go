@@ -69,7 +69,7 @@ func AddToAttempted(letter string) {
 // Load a page on the website
 func LoadPage(page string) {
 	Template = page
-	fmt.Println("webpage is now ", page)
+	fmt.Println("webpage is now ", Template)
 }
 
 // Load home page
@@ -85,7 +85,6 @@ func Play() {
 // Load win screen
 func Win() {
 	LoadPage(WinPage)
-	fmt.Println("Win")
 }
 
 // Load lose screen
