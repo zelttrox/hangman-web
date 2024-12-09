@@ -36,18 +36,17 @@ func GuessWord(input string) {
 // Counts down attempts and progresses hangman figure
 func AttemptProgress(progress int) {
 	Attempts = Attempts - progress
-	if Attempts < 0 || Attempts >= len(HangmanPosition) {
-		fmt.Println("Error: Attempts out of range")
-		return
-	}
 	HangmanProgress = HangmanPosition[10-Attempts]
 }
 
 // Check if the word progress matches the word to guess
 func CheckWord() {
+	CurrentWord = strings.Join(WordProgress, "")
+	fmt.Println("current word: ", CurrentWord)
+	fmt.Println("word to find: ", Word)
 	if CurrentWord == Word {
 		Win()
-	} else if !(CurrentWord == Word) {
+	} else if CurrentWord != Word && Attempts <= 0 {
 		Lose()
 	}
 }
@@ -70,6 +69,7 @@ func AddToAttempted(letter string) {
 // Load a page on the website
 func LoadPage(page string) {
 	Template = page
+	fmt.Println("webpage is now ", Template)
 }
 
 // Load home page
@@ -85,17 +85,30 @@ func Play() {
 // Load win screen
 func Win() {
 	LoadPage(WinPage)
+	Reset()
+	Init()
+	Play()
 }
 
 // Load lose screen
 func Lose() {
 	LoadPage(LosePage)
+	fmt.Println("Lose")
 }
 
 // Sets letter and word input back to blank
 func ResetInput() {
 	Input = ""
 	WordInput = ""
+}
+
+func Reset() {
+	WordProgress = nil
+	AttemptedLetters = nil
+	CurrentWord = ""
+	AttemptedDisplay = ""
+	HangmanProgress = HangmanPosition[0]
+	ResetInput()
 }
 
 // Main function to run the game
@@ -105,6 +118,5 @@ func Run() {
 	} else if len(Input) > 0 {
 		GuessLetter(Input)
 	}
-	CurrentWord = strings.Join(WordProgress, "")
 	ResetInput()
 }

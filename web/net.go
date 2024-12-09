@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"fmt"
 	hang "main/scripts"
 	"net/http"
@@ -9,7 +10,7 @@ import (
 
 // Create the web server
 func CreateWebsite() {
-	hang.Template = "web/game.html"
+	Template = hang.Template
 	http.HandleFunc("/", Index)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 	http.ListenAndServe(":8080", nil)
@@ -18,11 +19,11 @@ func CreateWebsite() {
 // Server handler
 func Index(w http.ResponseWriter, r *http.Request) {
 
-	// GET Request
+	// Use hang.Template directly
 	data := WebData{
-		Title:    "Hangman",
 		Image:    hang.HangmanProgress,
 		Progress: hang.CurrentWord,
+		Attemps:  hang.Attempts,
 	}
 
 	// POST Request
@@ -34,14 +35,21 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		hang.Run()
 
 		// DEBUG
-		fmt.Println("current word: ", hang.WordProgress)
-		fmt.Println("word to guess: ", hang.Word)
-		fmt.Println("hangman pos: ", hang.HangmanPosition)
-		fmt.Println("attempts: ", hang.Attempts)
+		fmt.Println(hang.Template)
+
+		data.Image = hang.HangmanProgress
+		data.Progress = hang.CurrentWord
+		data.Attemps = hang.Attempts
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(data)
+		return
 	}
 
-	hang.Template = "web/game.html"
+	LoadTemplate(w, data)
+}
 
+func LoadTemplate(w http.ResponseWriter, data WebData) {
 	// HTML File parsing
 	tmpl, err := template.ParseFiles(hang.Template)
 	if err != nil {

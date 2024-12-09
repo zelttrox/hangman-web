@@ -4,73 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{.Title}}</title>
-
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
     <div class="game-container">
-    <p class="text"> {{.Title}} </p>
+    
+        <img class="logo" src="/static/images/logo.png">
 
-    <h1 class="text">Jeu du Pendu</h1>
-
-    <div class="hangman">
-        <img src={{.Image}}>
+    <div>
+        <img id="hangman-image" class="hangman" src={{.Image}}>
+        <p id="word-progress" class="text-progress"> {{.Progress}} </p>
     </div>
+    
+    <div class="keyboard-cont">
+        <div id="alphabet">
+            <script src="/static/script.js"></script>
+        </div>
 
-        <p class="text"> {{.Progress}} </p>
+        <br>
 
-    <div id="alphabet">  
-    </div>
+        <div class="guess-cont">
+            <input class="input" name="guess-input" type="text" />
+            <button class="guess-btn"> Guess Word </button>
+        </div>
 
-    <button class="guess-btn"> Guess Word </button>
     </div>
 
 </body>
-
-<script>
-    
-// Fonction pour générer les boutons de lettres
-function generateAlphabetButtons() {
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const alphabetContainer = document.getElementById('alphabet');
-
-    // Création d'un bouton pour chaque lettre
-    alphabet.split('').forEach(letter => {
-        const button = document.createElement('input');
-        button.innerHTML = letter;
-        button.classList.add('letter-btn');
-        button.type = "button";
-        button.name = "letter";
-        button.value = letter;
-        button.addEventListener('click', function () {
-            handleLetterClick(button, letter);
-        });
-        alphabetContainer.appendChild(button);
-    });
-}
-
-// Fonction qui gère ce qui se passe lorsqu'on clique sur une lettre
-function handleLetterClick(button, letter) {
-    // Désactiver le bouton pour éviter de cliquer plusieurs fois
-    button.disabled = true;
-
-    // Envoi de la lettre au serveur via AJAX
-    fetch('/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `letter=${letter}`
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-generateAlphabetButtons()
-
-</script>
