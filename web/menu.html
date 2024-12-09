@@ -6,18 +6,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<p> {{.Title}} </p>
+<div class= "title1 ">
+<p class="title"> HANGMAN LOL </p>
+</div>
 
 <body>
    
 
-<div> 
-    <p class="Normal">Normal</p>
+<div class="flexbox"> 
 
+    <button class="Normal" 
+    type="button"> Normal </button>
 </div>
 
-<div>    <p class="Hardcore"> Hardcore</p>
+    <div class="flexbox2">
+    <button class="Hardcore"
+    type="button">Hardcore </button>
+</div>
 
 </div>
  
@@ -28,12 +33,15 @@
 <style>
 
 body {
-color:black;
-background-color:white;
-background-image:url(/home/romain/Documents/GitHub/hangman-web/web/static/images/wallpaper.jpeg);
-margin:0;
-
+ background: linear-gradient(
+ rgba(0, 0, 0, 0.581), 
+ rgba(0, 0, 0, 0.579)
+ ),url(https://imgr.gameblog.fr/img/news/527396_65d8669cd8153.jpg?imgeng=/cmpr_10/w_1320/m_letterbox&ver=1);
+ background-size:cover;
+ 
 }
+
+
 
 
 .Hardcore {
@@ -43,7 +51,7 @@ margin:0;
    border :2px solid goldenrod;
    background-color: rgb(40, 40, 44);
    border-radius: 5px;
-   padding: 10px 15px;
+   padding: 10px 10px;
    
 }
 
@@ -57,5 +65,30 @@ margin:0;
    padding: 10px 15px;
 }
 
+.flexbox {
+    display : flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.flexbox2 {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.title1 {
+
+    display: flex ;
+    justify-content: center;
+    margin-top: 5%;
+}
+.title {
+
+    font-size: x-large  ;
+    justify-content: center;
+    color: white;
+    
+}
 </style>
 

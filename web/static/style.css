@@ -1,119 +1,31 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #181818;
-    transform: scale(0.75);
-    transform-origin: center;
-    margin-top: -85px;
-}
-
-#alphabet {
+.flexMain {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px;
-    max-width: 600px;
-}
-
-.text {
-    color: rgb(238, 238, 238);
-    font-weight: 500;
-}
-
-.text-progress {
-    color: rgb(238, 238, 238);
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.game-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     flex-direction: row;
-    align-items: center;
-    text-align: center;
 }
 
-.progress-cont {
+.flex {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-}
-
-.controls-cont {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
 }
 
-.guess-cont {
+#letter-container button {
+    height: 2.4em;
+    width: 2.4em;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+  .letter-container {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    flex-direction: row;
-}
+    gap: 0.6em;
+  }
 
-.hangman {
-    border: 2px solid #333;
-    border-radius: 5px;
-    width: 25%;
-    height: 25%;
-}
-
-.logo {
-    width: 10%;
-    height: 10%;
-}
-
-.input {
-    font-size: 20px;
-    width: 150px;
-    height: 41px;
-    border: 2px solid;
-    border-image: linear-gradient(to right, #093a72, rgb(21, 85, 128)) 1;
-    background-color: #222222;
-    color: #d4ae2f;
-}
-
-.letter-btn {
-    font-size: 20px;
-    padding: 10px 15px;
-    border: 2px solid;
-    border-image: linear-gradient(to right, #093a72, rgb(21, 85, 128)) 1;
-    background-color: #222222;
-    cursor: pointer;
-    color: white;
-    font-weight: 700;
-    transition: 0.2s;
-}
-
-.letter-btn:disabled {
-    background-color: #1d1d1d;
-    cursor: not-allowed;
-    color: #313131;
-    border-image: linear-gradient(to right, #116cd433, rgba(34, 138, 207, 0.185)) 1;
-}
-
-.letter-btn:hover {
-    border-image: linear-gradient(to right, #116cd4, rgb(34, 138, 207)) 1;
-    background-color: #272727;
-}
-
-.guess-btn:hover {
-    border-image: linear-gradient(to right, #0981c7, rgb(34, 201, 207)) 1;
-    background-color: #272727;
-}
-
-.guess-btn {
-    font-size: 20px;
-    padding: 10px 15px;
-    background-color: #f4f4f4;
-    cursor: pointer;
-    border: 2px solid;
-    border-image: linear-gradient(to right, #05687a, rgb(20, 122, 122)) 1;
-    background-color: #222222;
-    color: white;
-    font-weight: 700;
-    transition: 0.2s;
+.btnGuess {
+    background-color: rgba(191, 120, 66, 0.651);
+    border-color: rgba(120, 93, 72, 0.651);
+    border-radius: 3px;
+    box-shadow: rgba(70, 38, 15, 0.607) 1px 1px 1px 1px;
 }
