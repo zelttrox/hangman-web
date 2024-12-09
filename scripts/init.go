@@ -2,7 +2,7 @@ package hangman
 
 import (
 	"bufio"
-	"flag"
+	"fmt"
 	"math/rand"
 	"os"
 	"strings"
@@ -26,18 +26,8 @@ func GetWordList(path string) ([]string, error) {
 
 // Choix aléatoire du mot à partir de la liste
 func GetWord() {
-	WordChosen = WordList[rand.Intn(len(WordList))]
-	WordChosen = strings.ToUpper(Word)
-}
-
-// Scan des arguments choisis dans le terminal
-func GetArg() {
-	argHardcore := flag.Bool("hard", false, "Hardcore mode")
-	flag.Parse()
-
-	if *argHardcore {
-		IsHardcoreMode = true
-	}
+	Word = WordList[rand.Intn(len(WordList))]
+	Word = strings.ToUpper(Word)
 }
 
 // Initialisation des cases du Hangman
@@ -48,38 +38,51 @@ func InitWordProgress() {
 }
 
 func InitHangmanProgress() {
-	HangmanPosition = []string {
-	"web/static/images/HangmanPositions/Hangman_1.png",
-	"web/static/images/hangman-positions/Hangman_2.png",
-	"web/static/images/hangman-positions/Hangman_3.png",
-	"web/static/images/hangman-positions/Hangman_4.png",
-	"web/static/images/hangman-positions/Hangman_5.png",
-	"web/static/images/hangman-positions/Hangman_6.png",
-	"web/static/images/hangman-positions/Hangman_7.png",
-	"web/static/images/hangman-positions/Hangman_8.png",
-	"web/static/images/hangman-positions/Hangman_9.png",
-	"web/static/images/hangman-positions/Hangman_10.png",
+	HangmanPosition = []string{
+		"none",
+		"/static/images/hangman-positions/Hangman_1.png",
+		"/static/images/hangman-positions/Hangman_2.png",
+		"/static/images/hangman-positions/Hangman_3.png",
+		"/static/images/hangman-positions/Hangman_4.png",
+		"/static/images/hangman-positions/Hangman_5.png",
+		"/static/images/hangman-positions/Hangman_6.png",
+		"/static/images/hangman-positions/Hangman_7.png",
+		"/static/images/hangman-positions/Hangman_8.png",
+		"/static/images/hangman-positions/Hangman_9.png",
+		"/static/images/hangman-positions/Hangman_10.png",
 	}
 }
 
-// Initialisation des fonctions
+// Initialisation of pages
+
+func InitPages() {
+	HomePage = "web/menu.html"
+	MainPage = "web/game.html"
+	WinPage = "web/win.html"
+	LosePage = "web/lose.html"
+}
+
+// Initialisation of fonctions
 func Init() {
 
-	IsRunning = false
+	InitPages()
 
-	GetArg()
+	HangmanProgress = "/static/images/hangman-positions/Hangman_0.png"
 
-	if IsHardcoreMode {
-		Attempts = 5
-	} else {
-		Attempts = 10
-	}
+	GuessTried = true
+	IsGameOver = false
 
 	MaxAttempts = 10
-	HangmanLen = 7
+	Attempts = MaxAttempts
+	Dictionary = "files/league.txt"
 
 	GetWordList(Dictionary)
 	GetWord()
 
 	InitWordProgress()
+	InitHangmanProgress()
+
+	Play()
+
+	fmt.Println("word: ", Word)
 }
