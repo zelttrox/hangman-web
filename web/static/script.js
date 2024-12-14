@@ -42,7 +42,6 @@ function handleLetterClick(button, letter) {
         document.getElementById('hangman-image').src = data.Image;
         document.getElementById('word-progress').textContent = data.Progress
         document.getElementById('attempts-left').textContent = ("Attempts left: " + data.Attempts)
-
         var attemptsLeft = data.Attempts
         checkProgress()
     })
@@ -56,6 +55,10 @@ function checkProgress() {
     console.log(wordProgress)
 
     if (!wordProgress.includes('_') || attemptsLeft <= 0) {
+        location.reload()
+    }
+
+    if (attemptsLeft <= 0) {
         location.reload()
     }
 }
