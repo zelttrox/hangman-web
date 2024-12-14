@@ -41,6 +41,7 @@ function handleLetterClick(button, letter) {
         // Update the image and progress elements with the new data
         document.getElementById('hangman-image').src = data.Image;
         document.getElementById('word-progress').textContent = data.Progress
+        document.getElementById('attempts-left').textContent = ("Attempts left: " + data.Attempts)
 
         var attemptsLeft = data.Attempts
         checkProgress()
