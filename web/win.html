@@ -20,18 +20,24 @@
         width: 100%;
         height: 500px;
     }
-    .restart {    
+    .restart {
     position: absolute;
-     top:5%; left:45%;
-    font-size: 25px;
-    color: rgb(196, 189, 173);
-   border :2px solid goldenrod;
-   background-color: rgb(40, 40, 44);
-   border-radius: 5px;
-   padding: 10px 15px;
-   
-    }
-    
+    top:5%; left:45%;
+    font-size: 60px;
+    padding: 10px 15px;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #093a72, rgb(21, 85, 128)) 1;
+    background-color: #222222;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    transition: 0.2s;
+    text-decoration: none;
+}
+.restart:hover {
+    border-image: linear-gradient(to right, #116cd4, rgb(34, 138, 207)) 1;
+    background-color: #272727;
+}
 </style>
 
 <body>
