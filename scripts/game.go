@@ -85,9 +85,8 @@ func Play() {
 // Load win screen
 func Win() {
 	LoadPage(WinPage)
-	Reset()
-	Init()
-	Play()
+	fmt.Println("Win")
+
 }
 
 // Load lose screen
