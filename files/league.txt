@@ -7,7 +7,7 @@ Anivia
 Annie
 Aphelios
 Ashe
-Aurelion Sol
+AurelionSol
 Azir
 Bard
 Blitzcrank
@@ -70,7 +70,7 @@ Lux
 Malphite
 Malzahar
 Maokai
-Miss Fortune
+MissFortune
 Mordekaiser
 Morgana
 Nami
