@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	hang.Init()
+	hang.Initweb()
 	web.CreateWebsite()
 }

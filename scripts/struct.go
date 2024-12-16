@@ -23,6 +23,7 @@ var Template string // Current HTML template page
 
 var HomePage string // Homescreen page
 var MainPage string // Game page
+var HardPage string // Game Hardcore page
 var WinPage string  // Winning page
 var LosePage string // Losing page
 

@@ -81,6 +81,9 @@ func Home() {
 func Play() {
 	LoadPage(MainPage)
 }
+func Hardmode() {
+	LoadPage(HardPage)
+}
 
 // Load win screen
 func Win() {
@@ -108,7 +111,7 @@ func Reset() {
 	CurrentWord = ""
 	AttemptedDisplay = ""
 	HangmanProgress = HangmanPosition[0]
-	Init()
+	Initweb()
 	ResetInput()
 }
 

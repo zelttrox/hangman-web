@@ -58,14 +58,21 @@ func InitHangmanProgress() {
 func InitPages() {
 	HomePage = "web/menu.html"
 	MainPage = "web/game.html"
+	HardPage = "web/hardgame.html"
 	WinPage = "web/win.html"
 	LosePage = "web/lose.html"
 }
 
 // Initialisation of fonctions
-func Init() {
+func Initweb() {
 
 	InitPages()
+
+	Home()
+
+	fmt.Println("word: ", Word)
+}
+func InitNormal() {
 
 	HangmanProgress = "/static/images/hangman-positions/Hangman_0.png"
 
@@ -82,7 +89,24 @@ func Init() {
 	InitWordProgress()
 	InitHangmanProgress()
 
-	Home()
+	Play()
+}
+func InitHard() {
+	HangmanProgress = "/static/images/hangman-positions/Hangman_4.png"
 
-	fmt.Println("word: ", Word)
+	GuessTried = true
+	IsGameOver = false
+
+	MaxAttempts = 6
+	Attempts = MaxAttempts
+	Dictionary = "files/league.txt"
+
+	GetWordList(Dictionary)
+	GetWord()
+
+	InitWordProgress()
+	InitHangmanProgress()
+
+	Hardmode()
+
 }

@@ -14,6 +14,7 @@ func CreateWebsite() {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/reset", Resetgame)
 	http.HandleFunc("/play", Playgame)
+	http.HandleFunc("/playHard", PlayHard)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 	http.ListenAndServe(":8080", nil)
 }
@@ -73,6 +74,11 @@ func Resetgame(w http.ResponseWriter, r *http.Request) {
 }
 func Playgame(w http.ResponseWriter, r *http.Request) {
 
-	hang.Play()
+	hang.InitNormal()
+	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+func PlayHard(w http.ResponseWriter, r *http.Request) {
+
+	hang.InitHard()
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
