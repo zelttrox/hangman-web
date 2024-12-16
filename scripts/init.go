@@ -82,7 +82,7 @@ func Init() {
 	InitWordProgress()
 	InitHangmanProgress()
 
-	Play()
+	Home()
 
 	fmt.Println("word: ", Word)
 }
