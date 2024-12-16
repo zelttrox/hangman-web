@@ -1,6 +1,6 @@
 # hangman
 
-Hangman est un jeu du pendu sur Terminal créé en Go.
+Hangman Web est un jeu du pendu sur un navigateur créé en Go, HTML, CSS et JavaScript.
 
 > Créé en utilisant [VS Code](https://code.visualstudio.com/)
 
@@ -20,21 +20,17 @@ Installation de Go :
 sudo apt-get -y install golang-go
 ```
 
-Installation de Arcatia :
+Installation de Hangman Web :
 ```
-git clone https://github.com/zelttrox/hangman.git
+git clone https://github.com/zelttrox/hangman-web.git
 ```
 
 Lancement du jeu :
 ```
-go run main.go -list [Dictionnaire]
+go run main.go
 ```
-Il existe deux dictionnaires :
-- Jeux ("games")
-- League of Legends ("lol")
+Ouvrir un navigateur et aller sur localhost:8080.
+
+Il existe un dictionnaire sur le thème de League of Legends ("lol")
 
 Le jeu possède aussi un mode difficile (Hardcore).
-Lancement en mode difficile :
-```
-go run main.go -hard
-```
