@@ -29,3 +29,4 @@ var LosePage string // Losing page
 var IsHardcoreMode bool // Définit si le jeu est en mode hardcore ou en normal
 var GuessTried bool     // Définit si le guess du mot a été utilisé
 var IsGameOver bool     // Définit l'état de victoire du jeu
+var GameState string    //Etat du jeu 

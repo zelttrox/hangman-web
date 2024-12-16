@@ -12,6 +12,7 @@ import (
 func CreateWebsite() {
 	Template = hang.Template
 	http.HandleFunc("/", Index)
+	http.HandleFunc("/reset", Resetgame)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 	http.ListenAndServe(":8080", nil)
 }
@@ -40,6 +41,8 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(data)
+
+		
 		return
 	}
 
@@ -61,4 +64,10 @@ func LoadTemplate(w http.ResponseWriter, data WebData) {
 		fmt.Println("Error executing template:", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
+}
+func Resetgame(w http.ResponseWriter, r* http.Request) {
+	
+	hang.Reset()
+	http.Redirect(w, r, "/", http.StatusSeeOther)
+
 }

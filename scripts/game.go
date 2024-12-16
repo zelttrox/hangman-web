@@ -102,11 +102,13 @@ func ResetInput() {
 }
 
 func Reset() {
+
 	WordProgress = nil
 	AttemptedLetters = nil
 	CurrentWord = ""
 	AttemptedDisplay = ""
 	HangmanProgress = HangmanPosition[0]
+	Init()
 	ResetInput()
 }
 

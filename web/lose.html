@@ -26,9 +26,10 @@
         width: 100%;
         height: 100%;
     }
-    .restart {
-        width: 100px;
-    font-size: 20px;
+    .restart {    
+    position: absolute;
+     top:79%; left:50%;
+    font-size: 25px;
     color: rgb(196, 189, 173);
    border :2px solid goldenrod;
    background-color: rgb(40, 40, 44);
@@ -39,9 +40,9 @@
 
 </style>
 
-    <form action="/" method="post"> 
-    <button class="restart" type="submit" name="replay-btn" value="replay"> Play again </button>
-    </form>
+<form action="/" method="post"> 
+    <a class="restart" href="/reset" > Replay </a>
+ </form>
 
 
     <img class="defeat" src="/static/defeat.png">
