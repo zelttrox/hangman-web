@@ -23,7 +23,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	data := WebData{
 		Image:    hang.HangmanProgress,
 		Progress: hang.CurrentWord,
-		Attemps:  hang.Attempts,
+		Attempts: hang.Attempts,
 	}
 
 	// POST Request
@@ -34,12 +34,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		hang.Run()
 
-		// DEBUG
-		fmt.Println(hang.Template)
-
 		data.Image = hang.HangmanProgress
 		data.Progress = hang.CurrentWord
-		data.Attemps = hang.Attempts
+		data.Attempts = hang.Attempts
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(data)
@@ -49,8 +46,8 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	LoadTemplate(w, data)
 }
 
+// Parses HTML template files
 func LoadTemplate(w http.ResponseWriter, data WebData) {
-	// HTML File parsing
 	tmpl, err := template.ParseFiles(hang.Template)
 	if err != nil {
 		fmt.Println("Error parsing template:", err)

@@ -20,6 +20,8 @@ function generateAlphabetButtons() {
     });
 }
 
+var attemptsLeft
+
 // Fonction qui gère ce qui se passe lorsqu'on clique sur une lettre
 function handleLetterClick(button, letter) {
 
@@ -41,8 +43,8 @@ function handleLetterClick(button, letter) {
         // Update the image and progress elements with the new data
         document.getElementById('hangman-image').src = data.Image;
         document.getElementById('word-progress').textContent = data.Progress
-
-        var attemptsLeft = data.Attempts
+        document.getElementById('attempts-left').textContent = ("Attempts left: " + data.Attempts)
+        attemptsLeft = data.Attempts
         checkProgress()
     })
 
@@ -57,6 +59,11 @@ function checkProgress() {
     if (!wordProgress.includes('_') || attemptsLeft <= 0) {
         location.reload()
     }
+
+    if (attemptsLeft <= 0) {
+        location.reload()
+    }
+    console.log(attemptsLeft)
 }
 
 generateAlphabetButtons();
